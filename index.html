@@ -10,15 +10,12 @@
 
 <body>
     <main id="app">
-        <input type="text" />
         <div>
-            <input type="text" />
-            <button>Add</button>
+            <input type="text" v-model="text" />
+            <button @click="handleClick">Add</button>
         </div>
         <ul>
-            <li>Note 1</li>
-            <li>Note 2</li>
-            <li>Note 3</li>
+            <li v-for="(note, i) in notes" v-bind:key="i">{{ note }}</li>
         </ul>
     </main>
     <script src="/index.js"></script>
