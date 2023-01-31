@@ -14,5 +14,8 @@ createApp({
                 this.$refs.input.focus();
             }
         },
+        handleClickLIItem(position) {
+            this.notes.splice(position, 1);
+        },
     },
 }).mount("#app");
