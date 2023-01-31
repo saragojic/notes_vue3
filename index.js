@@ -10,6 +10,8 @@ createApp({
         handleClick() {
             if (this.text) {
                 this.notes.push(this.text);
+                this.text = "";
+                this.$refs.input.focus();
             }
         },
     },
