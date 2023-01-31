@@ -1,1 +1,2 @@
-console.log("Hello World");
+const { createApp } = Vue;
+createApp({}).mount("#app");
