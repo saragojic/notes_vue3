@@ -15,7 +15,9 @@
     <meta name="msapplication-config" content="/notes_vue3/assets/favicon/browserconfig.xml" />
     <meta name="theme-color" content="#000000" />
     <link rel="stylesheet" href="/notes_vue3/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
@@ -29,7 +31,9 @@
                 <textarea ref="text" class="input__text" type="text" name="text" placeholder="Enter note..."
                     spellcheck="false" rows="6" v-model="text"></textarea>
                 <div class="input__controls">
-                    <button @click="add" class="input__controls__add">Add</button>
+                    <button @click="add" class="input__controls__add">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
             </div>
             <ul ref="list" class="notes">
@@ -38,7 +42,9 @@
                         <header class="note__title">{{ note.title }}</header>
                         <p class="note__text">{{ note.text }}</p>
                         <div class="note__controls">
-                            <button @click="del(note.id)" class="note__controls__delete">Delete</button>
+                            <button @click="del(note.id)" class="note__controls__delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
                     </article>
                 </li>
