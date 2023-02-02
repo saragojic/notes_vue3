@@ -106,3 +106,20 @@ body {
 .service-worker__text {}
 
 .service-worker__control {}
+
+@media screen and (max-width: 1280px) {
+    .note {
+        flex: 0 1 calc(50% - 4rem);
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .input {
+        max-width: unset;
+        margin: 2rem 3rem 3rem;
+    }
+
+    .note {
+        flex: 0 1 calc(100% - 4rem);
+    }
+}
