@@ -14,15 +14,32 @@ body {
 
 .input {}
 
-.input__title {}
+.input__title {
+    appearance: unset;
+    background: unset;
+    border: unset;
+    outline: unset;
+}
 
-.input__text {}
+.input__text {
+    appearance: unset;
+    background: unset;
+    border: unset;
+    outline: unset;
+}
 
 .input__controls {}
 
-.input__controls__add {}
+.input__controls__add {
+    appearance: unset;
+    background: unset;
+    border: unset;
+}
 
-.notes {}
+.notes {
+    padding-left: unset;
+    list-style-type: none;
+}
 
 .note {}
 
@@ -32,7 +49,11 @@ body {
 
 .note__controls {}
 
-.note__controls__delete {}
+.note__controls__delete {
+    appearance: unset;
+    background: unset;
+    border: unset;
+}
 
 .service-worker {}
 
