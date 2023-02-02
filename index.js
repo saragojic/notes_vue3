@@ -3,13 +3,9 @@ createApp({
     // Model
     data() {
         return {
-            notes: [
-                { id: "676c9ba771", title: "Title 1", text: "ToDo 1" },
-                { id: "dc19d1538f", title: "Title 2", text: "ToDo 2" },
-                { id: "fd8c75b4fb", title: "Title 3", text: "ToDo 2" },
-            ],
-            title: null,
-            text: null,
+            notes: [],
+            title: "",
+            text: "",
         };
     },
     // Controller
@@ -17,6 +13,7 @@ createApp({
         add() {
             if (this.title || this.text) {
                 this.notes.push(createNote(this.title, this.text));
+                this.save();
                 this.title = "";
                 this.text = "";
             }
@@ -24,7 +21,14 @@ createApp({
         del(id) {
             const position = this.notes.findIndex((note) => note.id === id);
             this.notes.splice(position, 1);
+            this.save();
         },
+        save() {
+            localStorage.setItem("notes", JSON.stringify(this.notes));
+        },
+    },
+    created() {
+        this.notes = JSON.parse(localStorage.getItem("notes")) || [];
     },
 }).mount("#app");
 
