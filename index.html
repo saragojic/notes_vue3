@@ -36,7 +36,7 @@
                     </button>
                 </div>
             </div>
-            <ul ref="list" class="notes">
+            <transition-group tag="ul" ref="list" class="notes">
                 <li v-for="(note, i) in notes" v-bind:key="i" :id="note.id" class="note">
                     <article>
                         <header class="note__title">{{ note.title }}</header>
@@ -48,7 +48,7 @@
                         </div>
                     </article>
                 </li>
-            </ul>
+            </transition-group>
         </main>
         <div id="global-ui">
             <div id="service-worker" v-if="updateAvailable" class="service-worker">
