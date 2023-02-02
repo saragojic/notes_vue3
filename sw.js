@@ -1,4 +1,4 @@
-const version = "v1.0.0-beta.0";
+const version = "v1.0.0-beta.2";
 
 const files = [
     "/notes_vue3/",
@@ -18,6 +18,12 @@ const files = [
     "/notes_vue3/assets/favicon/mstile-310x150.png",
     "/notes_vue3/assets/favicon/mstile-310x310.png",
 ];
+
+self.addEventListener("message", (event) => {
+    if (event.data.action === "skipWaiting") {
+        self.skipWaiting();
+    }
+});
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
