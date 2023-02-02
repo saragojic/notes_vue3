@@ -13,7 +13,7 @@ createApp({
         add() {
             if (this.title || this.text) {
                 this.notes.push(createNote(this.title, this.text));
-                this.save();
+
                 this.title = "";
                 this.text = "";
             }
@@ -21,10 +21,14 @@ createApp({
         del(id) {
             const position = this.notes.findIndex((note) => note.id === id);
             this.notes.splice(position, 1);
-            this.save();
         },
-        save() {
-            localStorage.setItem("notes", JSON.stringify(this.notes));
+    },
+    watch: {
+        notes: {
+            handler(val) {
+                localStorage.setItem("notes", JSON.stringify(val));
+            },
+            deep: true,
         },
     },
     created() {
