@@ -25,7 +25,7 @@
     <!-- View -->
     <div id="app" class="app">
         <main>
-            <div class="input">
+            <div class="input" :style="{ background: color, boxShadow: shadow }">
                 <input ref="title" class="input__title" type="text" placeholder="Title" spellcheck="false"
                     v-model="title" />
                 <textarea ref="text" class="input__text" type="text" name="text" placeholder="Enter note..."
@@ -34,10 +34,20 @@
                     <button @click="add" class="input__controls__add" title="Add Note">
                         <i class="fas fa-plus fa-2x"></i>
                     </button>
+                    <div class="input__controls__color">
+                        <button @click="showColors = !showColors" class="input__controls__color__button"
+                            title="Change Color">
+                            <i class="fas fa-palette fa-2x"></i>
+                        </button>
+                        <div class="input__color-palette" v-if="showColors">
+                            <button v-for="(color, i) in colors" :key="i" class="input__color-palette-select"
+                                @click="setColor(color)" :style="{ background: color.background }"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <transition-group tag="ul" ref="list" class="notes">
-                <li v-for="(note, i) in notes" v-bind:key="i" :id="note.id" class="note">
+                <li v-for="(note, i) in notes" v-bind:key="i" :id="note.id" class="note" :style="{ background: note.color, boxShadow: note.shadow }">
                     <article>
                         <header class="note__title">{{ note.title }}</header>
                         <p class="note__text">{{ note.text }}</p>

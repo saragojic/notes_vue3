@@ -8,13 +8,23 @@ createApp({
             text: "",
             worker: null,
             updateAvailable: false,
+            showColors: false,
+            colors: [
+                { background: "#fff740", shadow: "1px 1px 4px 1px #bfb700" },
+                { background: "#feff9c", shadow: "1px 1px 4px 1px #a3a400" },
+                { background: "#7afcff", shadow: "1px 1px 4px 1px #009397" },
+                { background: "#ff65a3", shadow: "1px 1px 4px 1px #8e0039" },
+                { background: "#ff7eb9", shadow: "1px 1px 4px 1px #980046" },
+            ],
+            color: "#fff740",
+            shadow: "1px 1px 4px 1px #bfb700",
         };
     },
     // Controller
     methods: {
         add() {
             if (this.title || this.text) {
-                this.notes.push(createNote(this.title, this.text));
+                this.notes.push(createNote(this.title, this.text, this.color, this.shadow));
                 this.title = "";
                 this.text = "";
             }
@@ -59,6 +69,11 @@ createApp({
             this.worker.postMessage({ action: "skipWaiting" });
             this.updateAvailable = false;
         },
+        setColor(color) {
+            this.color = color.background;
+            this.shadow = color.shadow;
+            this.showColors = false;
+        },
     },
     watch: {
         notes: {
@@ -74,9 +89,9 @@ createApp({
     },
 }).mount("#app");
 
-function createNote(title, text) {
+function createNote(title, text, color, shadow) {
     const id = generateId(title, text);
-    return { id, title, text };
+    return { id, title, text, color, shadow};
 }
 
 function generateId(title, text, length = 10) {
